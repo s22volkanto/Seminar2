@@ -1,18 +1,22 @@
 package model;
 
 public class Student {
+	
 	//1. variables
-	private long stID;
+	private long sID;
 	private String name;
 	private String surname;
+	private String personCode;
 	
-	private static long counter = 100;
-	//2. set and get
-	public long getstID() {
-		return stID;
+	private static long counter = 1000;
+	
+	//2.set and get
+	
+	public long getsID() {
+		return sID;
 	}
-	public void setstID() {
-		this.stID = counter;
+	public void setsID() {
+		this.sID = counter;
 		counter++;
 	}
 	public String getName() {
@@ -34,28 +38,41 @@ public class Student {
 		else
 			this.surname = "Undefinied";
 	}
-		
 	
+	
+	public String getPersonCode() {
+		return personCode;
+	}
+	public void setPersonCode(String personCode) {
+		if(personCode != null && personCode.matches("[0-9]{6}-[0-9]{5}"))
+			this.personCode = personCode;
+		else
+			this.personCode = "Undefinied";
+	}
 	//3. constructors
-	public Student() {
-		setstID();
-		setName("Jim");
-		setSurname("Small");
+	public Student()
+	{
+		setsID();
+		setName("Lara");
+		setSurname("Bernardes");
+		setPersonCode("123456-65432");
+
 	}
 	
-	public Student(String name, String surname) {
-		setstID();
+	public Student(String name, String surname, String personCode)
+	{
+		setsID();
 		setName(name);
 		setSurname(surname);
+		setPersonCode(personCode);
 	}
 	
-
 	//4. toString
 	@Override
-	public String toString()
-	{
-		return stID + ": " + name + " " + surname;
+	public String toString() {
+		return sID + ": "+ name + " " + surname + " [" + personCode + "]";
 	}
+	
 	//5. other functions
 
 }

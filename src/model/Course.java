@@ -1,14 +1,18 @@
 package model;
 
 public class Course {
-	//1. variables
+
+	//1.variables
 	private long cID;
 	private String title;
-	private Integer creditPoints;
+	private int creditPoints;
 	private Professor professor;
 	
-	private static long counter = 200;
-	//2. set and get
+	private static long counter = 100000;
+	
+	
+	
+	//2.get and set
 	public long getcID() {
 		return cID;
 	}
@@ -19,18 +23,17 @@ public class Course {
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
-		if(title != null  && title.matches("[A-Za-z 0-9]{4,40}"))
+		if(title != null && title.matches("[A-Za-z 0-9]{4,40}"))
 			this.title = title;
 		else
-			this.title = "Undefinied";
+			this.title = "Undefined";
 	}
-	public int getCreditPoint() {
+	public int getCreditPoints() {
 		return creditPoints;
 	}
-	public void setCreditPoint(Integer creditPoints) {
-		if(creditPoints > 0 && creditPoints <=20)
+	public void setCreditPoints(int creditPoints) {
+		if(creditPoints > 0 && creditPoints <= 20)
 			this.creditPoints = creditPoints;
 		else
 			this.creditPoints = 2;
@@ -44,30 +47,32 @@ public class Course {
 		else
 			this.professor = new Professor();
 	}
-		
-	
-	//3. constructors
+
+	//3.constructors
 	public Course() {
 		setcID();
-		setTitle("Math Analysis");
-		setCreditPoint(15);
-		setProfessor(professor);
+		setTitle("JAVA");
+		setCreditPoints(4);
+		setProfessor(new Professor());
 	}
 	
-	public Course(String title, Integer creditPoints, Professor professor) {
+	public Course(String title, int creditPoints, Professor professor) {
 		setcID();
 		setTitle(title);
-		setCreditPoint(creditPoints);
+		setCreditPoints(creditPoints);
 		setProfessor(professor);
 	}
+		
 	
-
-	//4. toString
+	//4.toSTring
 	@Override
-	public String toString()
-	{
-		return cID + ": " + title + " (" + creditPoints + "CP)" + professor.getName().charAt(0) + ". " + professor.getSurname();
+	public String toString() {
+		return cID + ": " + title + " (" + creditPoints + " CP), " 
+	+ professor.getName().charAt(0) + ". " + professor.getSurname();
 	}
-	//5. other functions
-
+	
+	
+	
+	
+	//5.other functions
 }
